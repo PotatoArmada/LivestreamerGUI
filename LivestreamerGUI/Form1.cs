@@ -35,17 +35,23 @@ namespace LivestreamerGUI
         string strConfigFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\livestreamer\livestreamerrc";
         string strFavorites = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\LivestreamerFavorites.txt";
         string strStreamUrl;
-        
+        string strOptions = "";
+                
         private void btnStartStrem_Click(object sender, EventArgs e)
         {
             if (txtQuality.Text == "")
             {
                 txtQuality.Text = "best";
             }
-            
+            if (chkPassthrough.Checked) {
+                strOptions = "--player-passthrough http,hls,rtmp";
+            } else {
+                strOptions = "";
+            }
+
             if (txtStreamName.Text.Contains("crunchyroll") || txtStreamName.Text.Contains("youtube"))
             {
-                strCmdText = String.Format("/K livestreamer {0} {1}", txtStreamName.Text, txtQuality.Text);
+                strCmdText = String.Format("/K livestreamer {0} {1} {2}", strOptions, txtStreamName.Text, txtQuality.Text);
             }
             else
             {
@@ -55,7 +61,8 @@ namespace LivestreamerGUI
                 strStreamUrl = strStreamUrl.Replace("twitch.tv/", "");
                 txtStreamName.Text = strStreamUrl;
                 
-                strCmdText = "/K livestreamer http://twitch.tv/" + strStreamUrl + " " + txtQuality.Text;
+                strCmdText = String.Format("/K livestreamer {0} http://twitch.tv/{1} {2}", strOptions, strStreamUrl, txtQuality.Text);
+                //strCmdText = "/K livestreamer http://twitch.tv/" + strStreamUrl + " " + txtQuality.Text;
             }
             
             System.Diagnostics.Process.Start("CMD.exe", strCmdText);
@@ -128,6 +135,10 @@ namespace LivestreamerGUI
         private void btnTwitchChannels_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.twitch.tv/directory");
+        }
+
+        private void chkPassthrough_CheckedChanged(object sender, EventArgs e) {
+            
         }
 
     }

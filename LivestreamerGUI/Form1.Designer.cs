@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnOpenChat = new System.Windows.Forms.Button();
             this.btnTwitchChannels = new System.Windows.Forms.Button();
+            this.chkPassthrough = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtStreamName
@@ -52,7 +53,7 @@
             // 
             this.btnStartStrem.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnStartStrem.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartStrem.Location = new System.Drawing.Point(0, 225);
+            this.btnStartStrem.Location = new System.Drawing.Point(0, 241);
             this.btnStartStrem.Name = "btnStartStrem";
             this.btnStartStrem.Size = new System.Drawing.Size(341, 92);
             this.btnStartStrem.TabIndex = 1;
@@ -64,7 +65,7 @@
             // 
             this.txtQuality.Location = new System.Drawing.Point(227, 132);
             this.txtQuality.Name = "txtQuality";
-            this.txtQuality.Size = new System.Drawing.Size(100, 22);
+            this.txtQuality.Size = new System.Drawing.Size(99, 22);
             this.txtQuality.TabIndex = 2;
             this.txtQuality.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuality_KeyDown);
             // 
@@ -141,11 +142,24 @@
             this.btnTwitchChannels.UseVisualStyleBackColor = true;
             this.btnTwitchChannels.Click += new System.EventHandler(this.btnTwitchChannels_Click);
             // 
+            // chkPassthrough
+            // 
+            this.chkPassthrough.AutoSize = true;
+            this.chkPassthrough.Location = new System.Drawing.Point(12, 209);
+            this.chkPassthrough.Name = "chkPassthrough";
+            this.chkPassthrough.Size = new System.Drawing.Size(183, 21);
+            this.chkPassthrough.TabIndex = 10;
+            this.chkPassthrough.Text = "Use Player Passthrough";
+            this.chkPassthrough.UseVisualStyleBackColor = true;
+            this.chkPassthrough.CheckedChanged += new System.EventHandler(this.chkPassthrough_CheckedChanged);
+            this.chkPassthrough.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuality_KeyDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 317);
+            this.ClientSize = new System.Drawing.Size(341, 333);
+            this.Controls.Add(this.chkPassthrough);
             this.Controls.Add(this.btnTwitchChannels);
             this.Controls.Add(this.btnOpenChat);
             this.Controls.Add(this.label2);
@@ -177,6 +191,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOpenChat;
         private System.Windows.Forms.Button btnTwitchChannels;
+        private System.Windows.Forms.CheckBox chkPassthrough;
     }
 }
 
